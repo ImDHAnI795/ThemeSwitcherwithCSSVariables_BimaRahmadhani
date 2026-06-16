@@ -1,0 +1,304 @@
+/* =========================
+   DESIGN TOKENS
+========================= */
+
+:root {
+    --color-bg: #f8fafc;
+    --color-surface: #ffffff;
+    --color-text: #0f172a;
+    --color-muted: #64748b;
+    --color-accent: #2563eb;
+    --color-border: rgba(15, 23, 42, 0.08);
+
+    --radius-lg: 24px;
+
+    --shadow-lg: 0 25px 50px rgba(0, 0, 0, 0.12);
+
+    --transition: 300ms ease;
+}
+
+/* =========================
+   RESET
+========================= */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+}
+
+/* =========================
+   HIDE INPUTS
+========================= */
+
+input[type="radio"] {
+    position: absolute;
+
+    opacity: 0;
+}
+
+/* =========================
+   THEMES
+========================= */
+
+.theme-system:has(#light:checked) {
+    --color-bg: #f8fafc;
+    --color-surface: #ffffff;
+    --color-text: #0f172a;
+    --color-muted: #64748b;
+    --color-accent: #2563eb;
+    --color-border: rgba(15, 23, 42, 0.08);
+}
+
+.theme-system:has(#dark:checked) {
+    --color-bg: #020617;
+    --color-surface: #0f172a;
+    --color-text: #f8fafc;
+    --color-muted: #cbd5e1;
+    --color-accent: #38bdf8;
+    --color-border: rgba(255, 255, 255, 0.08);
+}
+
+.theme-system:has(#aurora:checked) {
+    --color-bg: #0f172a;
+    --color-surface: #1e293b;
+    --color-text: #f8fafc;
+    --color-muted: #cbd5e1;
+    --color-accent: #8b5cf6;
+    --color-border: rgba(255, 255, 255, 0.08);
+}
+
+/* =========================
+   APP
+========================= */
+
+.theme-system {
+    min-height: 100vh;
+
+    background: var(--color-bg);
+
+    transition: var(--transition);
+}
+
+.container {
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 80px 24px;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 60px;
+
+    color: var(--color-text);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    text-align: center;
+}
+
+.badge {
+    display: inline-block;
+
+    padding: 10px 18px;
+
+    border-radius: 999px;
+
+    background: var(--color-accent);
+
+    color: white;
+
+    font-size: 0.9rem;
+
+    font-weight: 600;
+
+    margin-bottom: 24px;
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 6vw, 5rem);
+
+    margin-bottom: 20px;
+}
+
+.hero p {
+    max-width: 750px;
+
+    margin: auto;
+
+    line-height: 1.8;
+
+    color: var(--color-muted);
+
+    font-size: 1.1rem;
+}
+
+/* =========================
+   SWITCHER
+========================= */
+
+.theme-picker {
+    margin-top: 40px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+.theme-picker label {
+    padding: 14px 28px;
+
+    border-radius: 999px;
+
+    background: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    transition: var(--transition);
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.theme-picker label:hover {
+    transform: translateY(-3px);
+}
+
+/* ACTIVE BUTTON */
+
+.theme-system:has(#light:checked) label[for="light"],
+.theme-system:has(#dark:checked) label[for="dark"],
+.theme-system:has(#aurora:checked) label[for="aurora"] {
+    background: var(--color-accent);
+
+    color: white;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.preview-card {
+    width: 100%;
+
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    background: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-lg);
+
+    transition: var(--transition);
+}
+
+.card-content {
+    padding: 60px;
+}
+
+.card-label {
+    display: inline-block;
+
+    padding: 8px 16px;
+
+    border-radius: 999px;
+
+    background: var(--color-accent);
+
+    color: white;
+
+    font-size: 0.85rem;
+
+    margin-bottom: 20px;
+}
+
+.card-content h2 {
+    color: var(--color-text);
+
+    font-size: clamp(2rem, 4vw, 3rem);
+
+    margin-bottom: 20px;
+}
+
+.card-content p {
+    color: var(--color-muted);
+
+    line-height: 1.9;
+
+    margin-bottom: 30px;
+
+    font-size: 1.05rem;
+}
+
+.card-content button {
+    border: none;
+
+    padding: 14px 28px;
+
+    border-radius: 14px;
+
+    background: var(--color-accent);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: 700;
+
+    transition: var(--transition);
+}
+
+.card-content button:hover {
+    transform: translateY(-3px);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 60px 20px;
+    }
+
+    .card-content {
+        padding: 32px;
+    }
+
+    .theme-picker {
+        gap: 10px;
+    }
+
+    .theme-picker label {
+        width: 100%;
+    }
+}
